@@ -1,11 +1,14 @@
-// Description: Check if the array is sorted or not.
+// Input: arr[] = [10, 20, 30, 40, 50]
+// Output: true
+// Explanation: The given array is sorted.
+
 #include <bits/stdc++.h>
 using namespace std;
 
 
-bool isArraySorted(int arr[], int n){
-    for(int i=0; i<n-1; i++){
-        if(arr[i] > arr[i+1]){
+bool arraySortedOrNot(vector<int>& arr) {
+    for(int i=1; i<arr.size(); i++){
+        if(arr[i-1] > arr[i]){
             return false;
         }
     }
@@ -13,20 +16,10 @@ bool isArraySorted(int arr[], int n){
 }
 
 int main(){
-    int arr[] = {1,3,4,6,8,10,20};
-    
-    int n = sizeof(arr)/sizeof(arr[0]);
-    
-    if(isArraySorted(arr, n)==true){
-        cout << "Array is sorted" << endl;
-    }
-    else{
-        cout << "Array is not sorted" << endl;
-    }
+    vector<int> arr = {1, 2, 3, 4, 5};
+    cout << arraySortedOrNot(arr) << endl;
 }
 
-//Output: Array is sorted
+// Output: 1 (true)
 
-// Approach
-//using Linear Search
 // Time Complexity: O(n)

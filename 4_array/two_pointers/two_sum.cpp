@@ -1,4 +1,7 @@
-// Problem: check if there are two elements in the array that sum up to the target
+// Input: arr[] = [1, 4, 45, 6, 10, 8], target = 16
+// Output: true
+// Explanation: arr[3] + arr[4] = 6 + 10 = 16.
+
 #include <bits/stdc++.h>
 using namespace std;
 
@@ -27,16 +30,12 @@ bool twoSum(vector<int>& arr, int target) {
 }
 
 
-int main(){
-    vector<int> a = {1,4,45,6,10,8};
-
-    int target = 16;
-
-    cout << twoSum(a, target) << endl;
-
+int main() {
+    vector<int> arr = {2, 7, 11, 15};
+    int target = 9;
+    cout << twoSum(arr, target) << endl;
 }
 
 //Output: 1
 
-//Approach: Two pointers
 //Time Complexity: O(nlogn)

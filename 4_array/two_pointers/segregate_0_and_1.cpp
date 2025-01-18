@@ -1,3 +1,7 @@
+// Input: arr[] = [0, 0, 1, 1, 0]
+// Output: [0, 0, 0, 1, 1]
+// Explanation:  After segregation, all the 0's are on the left and 1's are on the right. Modified array will be [0, 0, 0, 1, 1].
+
 #include <bits/stdc++.h>
 using namespace std;
 
