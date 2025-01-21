@@ -1,3 +1,4 @@
+//search in row and column wise sorted matrix
 #include <bits/stdc++.h>
 using namespace std;
 
@@ -38,3 +39,7 @@ int main(){
         cout << "Element not found in the matrix." << endl;
     }
 }
+
+//Output: Element found in the matrix.
+
+//Time Complexity: O((row)logn)
