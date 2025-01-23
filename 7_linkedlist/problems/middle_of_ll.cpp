@@ -8,17 +8,18 @@ class Node{
     Node *next;
 
     Node(int val){
-        data =val;
+        data = val;
         next = NULL;
     }
 };
-
-//using slow and fast pointer, we can solve this problem in one loop
-//slow move 1 step, fast move 2 step
-int middle(Node * head){  //T.C - O(n)
-    Node *slow = head;
-    Node *fast = head;
-
+int getMiddle(Node* head) {
+    if(head == NULL){
+        return -1;
+    }
+        
+    Node* slow = head;
+    Node* fast = head;
+        
     while(fast != NULL && fast->next != NULL){
         slow = slow->next;
         fast = fast->next->next;
@@ -26,19 +27,20 @@ int middle(Node * head){  //T.C - O(n)
     return slow->data;
 }
 int main(){
-
-    Node *a = new Node(10);
-    Node *b = new Node(20);
-    Node *c = new Node(30);
-    Node *d = new Node(40);
-    Node *e = new Node(50);
+    Node* a = new Node(1);
+    Node* b = new Node(2);
+    Node* c = new Node(3);
+    Node* d = new Node(4);
+    Node* e = new Node(5);
 
     a->next = b;
     b->next = c;
     c->next = d;
     d->next = e;
 
-    cout<<middle(a);
+    cout << getMiddle(a) << endl;
 }
 
-//more problem on this concept- delete middle node
+//Output: 3
+
+//Time complexity: O(n)
