@@ -28,22 +28,22 @@ int main(){
 
 
     //insert elements at a specific position
-    list<int>::iterator itr = li.begin();
+    auto itr = li.begin();
     advance(itr,3); //reach at 3rd index
     li.insert(itr,10); //insert 10 at 3rd index
     printList(li); //6 5 4 10 1 2 3
 
 
     //return size of list
-    cout<<"Size: "<<li.size()<<endl; //7
+    cout<<li.size()<<endl; //7
 
 
     //return head of list
-    cout<<"Head: "<<li.front()<<endl; //6
+    cout<<li.front()<<endl; //6
 
 
     //return tail of list
-    cout<<"Tail: "<<li.back()<<endl; //3
+    cout<<li.back()<<endl; //3
 
 
     //remove elements from the front
@@ -66,6 +66,4 @@ int main(){
     //remove all elements from the list
     li.clear();
     printList(li); //empty list
-    
-    return 0;
 }

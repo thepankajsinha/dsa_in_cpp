@@ -10,8 +10,7 @@ void display(vector<int> v){
     cout << endl;
 }
 
-int main()
-{
+int main(){
     // Vector declarationsb and initialization
     //  method 1
     vector<int> v;
@@ -39,23 +38,15 @@ int main()
 
 
     // print first element
-    v.front();
-    cout <<"Front: "<< v.front() << endl;  //1
+    cout << v.front() << endl;  //1
 
 
     // print last element
-    v.back();
-    cout <<"End: "<< v.back() << endl;  //20
+    cout << v.back() << endl;  //20
     
 
     // vector size
-    v.size();
-    cout <<"Size: "<< v.size() << endl;  //6
-
-
-    // vector capacity
-    v.capacity();
-    cout <<"Capacity: "<< v.capacity() << endl;  //8
+    cout << v.size() << endl;  //6
 
 
     // sort elements in ascending order
@@ -73,7 +64,7 @@ int main()
     display(v);  //1 2 3 4 10 20
 
 
-    // search in vector
+    // binary search in vector
     cout<<"Found 5: "<<(binary_search(v.begin(), v.end(), 5)? "Yes" : "No")<<endl;  //Found 5: No
 
 

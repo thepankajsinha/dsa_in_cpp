@@ -2,21 +2,14 @@
 using namespace std;
 
 
-void printArray(int arr[], int size) {
+void printArray(int arr[], int size) { //T.C - O(n)
     for (int i = 0; i < size; i++) {
         cout << arr[i] << " ";
     }
     cout<<endl;
 }
 
-void searchInArray(int arr[], int size, int target) {
-    for (int i = 0; i < size; i++) {
-        if (arr[i] == target) {
-            cout << "Element found at index " << i << endl;
-            return;
-        }
-    }
-}
+
 
 int main(){
 
@@ -43,12 +36,6 @@ int main(){
     //array size  T.C - O(1)
     cout << "Size : " << sizeof(arr) / sizeof(arr[0]) << endl;
     //Size : 5
-
-
-    // Search for an element  T.C - O(n)
-    int target = 5;
-    searchInArray(arr, 5, target);
-    // Element found at index 4
 
 
     // Take user input
