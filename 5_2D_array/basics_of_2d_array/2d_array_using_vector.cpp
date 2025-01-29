@@ -1,23 +1,18 @@
-//how to use vector of vector as  2D array
 #include <bits/stdc++.h>
 using namespace std;
 
 int main(){
 
     //Declarations and initialization of 2D vectors
-    //Here 4 is no. of rows and 3 is no. of columns
-    vector< vector<int> > v(4, vector<int>(3)); //this is equal as int arr[4][3]
-
-
     vector< vector<int> > arr = {{1,2,3},{4,5,6},{7,8,9},{10,11,12}}; //this is equal as int arr[4][3]
 
 
     //no of rows in vector
-    cout<<arr.size()<<endl;
+    cout<<arr.size()<<endl; //4
 
 
     //no of columns in vector
-    cout<<arr[0].size()<<endl;
+    cout<<arr[0].size()<<endl; //3
     
 
     //how to print the vector
@@ -27,5 +22,19 @@ int main(){
         }
         cout<<endl;
     }
-    
+    // 1 2 3 
+    // 4 5 6 
+    // 7 8 9 
+    // 10 11 12 
+
+
+    //input vector with row and column
+    int row, col;
+    cin>>row>>col;
+    vector< vector<int> > v1(row, vector<int>(col));
+    for (int  i = 0; i < row; i++){
+        for (int j = 0; j < col; j++){
+            cin>>v1[i][j];
+        }
+    }
 }
