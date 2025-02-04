@@ -18,6 +18,6 @@ int main(){
     cout << isPowerofTwo(n) << endl;
 }
 
-// Output: true
+// Output: 1
 
 // Time Complexity: O(1)
