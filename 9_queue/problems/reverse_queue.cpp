@@ -32,11 +32,8 @@ void reverseQueue(queue<int>& q){
 
 
 int main(){
-
-    // Create a queue
     queue<int> q;
 
-    // Insert elements into the queue
     q.push(1);
     q.push(2);
     q.push(3);
@@ -44,11 +41,10 @@ int main(){
     q.push(5);
 
     cout<<"Original Queue: ";
-    display(q);
+    display(q); // Original Queue: 1 2 3 4 5
 
     reverseQueue(q);
     
     cout<<"Reversed Queue: ";
-    display(q);
-
+    display(q); // Reversed Queue: 5 4 3 2 1
 }
