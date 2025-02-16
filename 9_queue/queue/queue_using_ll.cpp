@@ -3,76 +3,66 @@ using namespace std;
 
 class Node{
     public:
-    int val;
+    int data;
     Node* next;
     Node(int val){
-        this->val = val;
-        this->next = NULL;
+        data = val;
+        next = NULL;
     }
 };
 
 class Queue{
     public:
-    Node* head;
-    Node* tail;
-    int size;
+    Node* front;
+    Node* back;
 
     Queue(){
-        head = tail = NULL;
-        size = 0;
+        front = back = NULL;
     }
 
-    //inserting node at tail
-    void push(int val){  //T.C -O(1)
-        Node* newNode = new Node(val);
-        if(size == 0) head = tail = newNode;
-        else{
-            tail->next = newNode;
-            tail = newNode;
+    bool isEmpty(){
+        if(front == NULL) return true;
+        else return false;
+    }
+
+    //inserting node at back
+    void push(int val){ 
+        
+        //if queue is empty
+        if (isEmpty()){
+            front = new Node(val);
+            back = front;
+            return;
         }
-        size++;
+
+        //if queue is not empty
+        back->next = new Node(val);
+        back = back->next;
+
     }
 
-    //deleting node from head
-    void pop(){  //T.C -O(1)
-        if(size == 0){
+    //deleting node from front
+    void pop(){ 
+
+        //if queue is empty
+        if(isEmpty()){
             cout<<"Queue is empty!"<<endl;
             return;
         }
-        head = head->next;
-        size--;
+
+        //if queue is not empty
+        Node* temp = front;
+        front = front->next;
+        delete temp;
     }
 
-    int front(){  //T.C -O(1)
-        if(size == 0){
+    int getFront(){  //T.C -O(1)
+        if(isEmpty()){
             cout<<"Queue is empty!"<<endl;
             return -1;
         }
-        return head->val;
+        return front->data;
     }
-
-    int back(){  //T.C -O(1)
-        if(size == 0){
-            cout<<"Queue is empty!"<<endl;
-            return -1;
-        }
-        return tail->val;
-    }
-
-
-    void display(){  //T.C -O(n)
-      Node* temp = head;
-      while(temp!= NULL){
-        cout<<temp->val<<" ";
-        temp = temp->next;
-      }
-      cout<<endl;
-    }
-
-    int returnSize(){  //T.C -O(1)
-        return size;
-    }
-
 };
 
 
@@ -81,12 +71,7 @@ int main(){
     q.push(1);
     q.push(2);
     q.push(3);
-    q.push(4);
-    q.display();
-    cout<<"Front: "<<q.front()<<endl;
-    cout<<"Back: "<<q.back()<<endl;
-    cout<<"Size: "<<q.returnSize()<<endl;
+    cout<<q.getFront()<<endl; //Output: 1
     q.pop();
-    q.display();
-    return 0;
+    cout<<q.getFront()<<endl; //Output: 2
 }

@@ -1,61 +1,84 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-class CircularQueue{
-    public:
+class CircularQueue
+{
+public:
+    int *arr;
+    int front, back, size;
 
-    int front = 0;
-    int back = -1;
-    int size=0;
-    int arr[5];
+public:
+    CircularQueue(int n){
+        arr = new int[n]; 
+        front = -1;
+        back = -1;
+        size = n;
+    }
+
+    bool isEmpty(){
+        if (front == -1) return true;
+        else return false;
+    }
+
+    bool isFull(){
+        if ((back + 1) % size == front) return true; //this is the condition for circular queue
+        else return false;
+    }
 
     void push(int val){
-        if(size == 5){
+        if (isEmpty()){ 
+            front = 0;
+            back = 0;
+            arr[back] = val;
+        }
+        else if (isFull()){ 
             cout << "Queue is full." << endl;
             return;
         }
-        back = (back + 1) % 5; //update back index
-        arr[back] = val;
-        size++;
+        else{
+            back++;
+            arr[back] = val;
+        }
     }
+
     void pop(){
-        if(size == 0){
+        if (isEmpty()){
             cout << "Queue is empty." << endl;
             return;
         }
-        front = (front + 1) % 5; //update front index
-        size--;
+        else if (front == back){
+            front = -1;
+            back = -1;
+        }
+        else{
+            front = (front + 1) % size; // this is the condition for circular queue
+        }
     }
 
-    int frontElement(){
-        if(size == 0){
+    int Front(){
+        if (isEmpty()){
             cout << "Queue is empty." << endl;
             return -1;
         }
         return arr[front];
     }
-
-    int backElement(){
-        return arr[back];
-    }
-
 };
 
-
-int main(){
-    CircularQueue q;
-    q.push(1); //1
-    q.push(2); //1 2
-    q.push(3); //1 2 3
-    q.push(4); //1 2 3 4
-    q.push(5); //1 2 3 4 5
-    cout<<q.frontElement()<<endl; // Output: 1
-    cout<<q.backElement() <<endl; // Output: 5
-    q.pop(); //2 3 4 5
-    cout<<q.frontElement()<<endl; // Output: 2
-    q.push(10); //10 2 3 4 5
-    cout<<q.frontElement()<<endl; // Output: 2
-    cout<<q.backElement()<<endl; // Output: 10
-    q.push(20); //Output: Queue is full.
-    return 0;
+int main()
+{
+    CircularQueue q(5);
+    q.push(1);
+    q.push(2);
+    q.push(3);
+    q.push(4);
+    q.push(5);
+    cout << q.Front() << endl; // Output: 1
+    q.pop();
+    cout << q.Front() << endl; // Output: 2
+    q.pop();
+    q.pop();
+    q.pop();
+    q.pop();
+    q.push(6);
+    cout << q.Front() << endl; // Output: 6
 }

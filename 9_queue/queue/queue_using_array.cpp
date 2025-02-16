@@ -4,68 +4,77 @@ using namespace std;
 
 class Queue{
     public:
-    int arr[5];
-    int front = 0;
-    int back = 0;
+    int* arr; //dynamic array declaration
+    int front, back, size;
 
-    void push(int val){ //T.C -O(1)
-        if(size()==5){
+    public:
+    Queue(int n){
+        arr = new int[n]; //dynamic array initialization
+        front = -1;
+        back = -1;
+        size = n;
+    }
+
+    bool isEmpty(){
+        if (front == -1) return true;
+        else return false;
+    }
+
+    bool isFull(){
+        if (back == size-1) return true;
+        else return false;
+    }
+
+    void push(int val){
+        if(isEmpty()){ //if queue is empty
+            front = 0;
+            back = 0;
+            arr[back] = val;
+        }
+        else if(isFull()){ //if queue is full
             cout<<"Queue is full."<<endl;
             return;
         }
         else{
-            arr[back] = val;
             back++;
+            arr[back] = val;
         }
     }
 
-    int size(){  //T.C -O(1)
-        return back - front;
-    }
-
-    void pop(){  //T.C -O(1)
-        if(size()==0){  
+    void pop(){
+        if(isEmpty()){ //if queue is empty
             cout<<"Queue is empty."<<endl;
             return;
+        }
+        else if(front == back){ //if only one element is present in queue
+            front = -1;
+            back = -1;
         }
         else{
             front++;
         }
     }
 
-    int returnFront(){ //T.C -O(1)
-        if(size()==0) cout<<"Queue is Empty"<<endl;
-        else return arr[front];
-    }
-
-    int returnBack(){ //T.C -O(1)
-        if(size()==0) cout<<"Queue is Empty"<<endl;
-        else return arr[back-1];
-    }
-
-    void display(){ //T.C -O(n)
-        for (int i = front; i < back; i++)
-        {
-            cout<<arr[i]<<" ";
+    int Front(){
+        if(isEmpty()){
+            cout<<"Queue is empty."<<endl;
+            return -1;
         }
-        cout<<endl;
+        return arr[front];
     }
-
 };
 
+
 int main(){
-    Queue q;
+    Queue q(5);
     q.push(1);
     q.push(2);
     q.push(3);
     q.push(4);
     q.push(5);
-    q.display(); //1 2 3 4 5 
-    q.push(6);   //Queue is full.
+    cout<<q.Front()<<endl; //Output: 1
     q.pop();
-    q.display(); //2 3 4 5 
-    cout<<"Front element "<<q.returnFront()<<endl; //2
-    cout<<"Back element "<<q.returnBack()<<endl; //5
-    cout<<"Size "<<q.size()<<endl; //4
-    return 0;
+    cout<<q.Front()<<endl; //Output: 2
+    q.pop();
+    cout<<q.Front()<<endl; //Output: 3
 }

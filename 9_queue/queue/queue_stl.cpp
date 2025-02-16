@@ -1,13 +1,11 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-void display(queue<int>& q){
-    int n = q.size();
-    for(int i=0; i<n; i++){
+void display(queue<int> q){
+    while(q.size() > 0){
         int x = q.front();
-        cout<<x<<" ";
+        cout << x << " ";
         q.pop();
-        q.push(x); // Push the popped element back to the queue
     }
     cout<<endl;
 }
@@ -25,24 +23,24 @@ int main(){
     q.push(4);
     q.push(5);
 
-    // Print the front element of the queue
-    cout<<"Front element : "<<q.front()<<endl;
+    // Print the front element
+    cout<<q.front()<<endl; //output: 1
 
 
-    //print rear element of the queue
-    cout<<"Back element: "<<q.back()<<endl;
+    //print rear element
+    cout<<q.back()<<endl; //output: 5
     
 
-    // Print the size of the queue
-    cout<<"Queue size: "<<q.size()<<endl;
+    // Print the size
+    cout<<q.size()<<endl; //output: 5
 
-    // Remove the front element of the queue
-    q.pop();
+    // Remove the element from the front
+    q.pop(); 
     
     // Check if the queue is empty
-    cout<<q.empty()<<endl;
+    cout<<q.empty()<<endl; //output: 0
 
     // Display queue 
-    display(q);
+    display(q); //output: 2 3 4 5
 
 }
