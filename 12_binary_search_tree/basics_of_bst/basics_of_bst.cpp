@@ -1,4 +1,5 @@
-//check if the given tree is BST or not
+//Best Case (Balanced BST) / Average - Search, Insertion, and Deletion: O(log n)
+//Worst Case (Unbalanced BST)- Search, Insertion, and Deletion: O(n)
 #include <bits/stdc++.h>
 using namespace std;
 
@@ -14,22 +15,12 @@ public:
     }
 };
 
-void inOrder(Node* root, vector<int>& ans){
-    if(root == NULL) return;
-    inOrder(root->left, ans);
-    ans.push_back(root->val);
-    inOrder(root->right, ans);
-}
 
-bool validateBST(Node* root){
-    vector<int> ans;
-    inOrder(root, ans);
-    
-    // Check if the vector is sorted in ascending order
-    for(int i=0; i<ans.size(); i++){
-        if(ans[i] > ans[i+1]) return false;
-    }
-    return true;
+void inOrder(Node* root){
+    if(root == NULL) return;
+    inOrder(root->left);
+    cout << root->val << " ";
+    inOrder(root->right);
 }
 
 int main(){
@@ -57,8 +48,10 @@ int main(){
     root->right->right = new Node(18);
     root->right->left->right = new Node(13);
 
-    Node* p = root->right->left;
-    Node* q = root->right->right;
+    inOrder(root);
     
-    cout<<"Is the given tree a BST?"<<(validateBST(root)? "Yes" : "No")<<endl;
 }
+
+// Output: 2 5 6 8 10 12 13 15 18
+// Time Complexity: O(n)
+// Space Complexity: O(n)
