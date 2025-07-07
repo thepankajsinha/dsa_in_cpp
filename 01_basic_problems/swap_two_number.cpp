@@ -20,6 +20,17 @@ void swapTwoNumber2 (int &a, int &b){
 
 }
 
+pair<int, int> get(int a, int b)
+{
+    a = a ^ b;
+
+    b = a ^ b;
+
+    a = a ^ b;
+
+    return {a, b};
+}
+
 int main(){
     cout<<"Enter two numbers; ";
     int a, b;
